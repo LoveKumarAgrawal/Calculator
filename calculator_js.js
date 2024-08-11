@@ -13,13 +13,19 @@ function deleteChar(){
     currentInput = currentInput.substring(0, currentInput.length - 1);
     document.getElementById('display').value = currentInput;
 }
-document.addEventListener('keypress', (hello) => {
-    var name = hello.key;
-    if(name=="1"||name=="2"||name=="3"||name=="4"||name=="5"||name=="6"||name=="7"||name=="8"||"*"||"/"||"-"||"+"){
+document.addEventListener('keydown', (hello) => {
+    const name = hello.key;
+    if("1234567890*/+-".includes(name)){
         appendToDisplay(name);
     }
     else if(name=="Enter"){
         calculate();
+    }
+    else if (name === "Escape") {
+        clearDisplay();
+    }
+    else if (name === "Backspace") {
+        deleteChar();
     }
 },false);
 
